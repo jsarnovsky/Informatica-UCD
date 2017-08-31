@@ -219,6 +219,7 @@ Added INFA HOME property to the Create Dynamic Deployment Group step.
 The Roll Back Deployment Group Step properly uses the -t flag.
   </release-note>
   	<release-note plugin-version="23">
+<<<<<<< HEAD
 Pull Request #23 - Import Objects step no longer adds Retain Generated Value and Checkin After Import parameters to control file if not selected.
   </release-note>
   	<release-note plugin-version="24">
@@ -231,5 +232,9 @@ Removed extra execute command from the Validate Deployment step.
 Added ability to use domain for Deploy Deployment Groups step
 Added security domain to Deploy Deployment Groups step
 	</release-note>
+=======
+Import Objects step no longer adds retaian generated sequence and checkin after import parameters to control file if not selected.
+  </release-note>
+>>>>>>> ee16ce751ffc64fd086917a5132cbe10a739819e
   </release-notes>
 </pluginInfo>

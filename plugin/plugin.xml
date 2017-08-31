@@ -11,7 +11,11 @@
 -->
 <plugin xmlns="http://www.urbancode.com/PluginXMLSchema_v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <header>
+<<<<<<< HEAD
     <identifier version="25" id="com.urbancode.air.plugin.Informatica" name="Informatica"/>
+=======
+    <identifier version="23" id="com.urbancode.air.plugin.Informatica" name="Informatica"/>
+>>>>>>> ee16ce751ffc64fd086917a5132cbe10a739819e
     <description>
     The Informatica plugin is an automation based plugin. It is executed as part of the deployment to migrate Informatica configuration and run scripts against the Informatica server and for creating and deploying deploying groups.
     </description>
