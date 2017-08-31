@@ -33,6 +33,7 @@ final def copydeploymentgroup = Boolean.valueOf(stepProps['copydeploymentgroup']
 
 final def srcrepo      = stepProps['srcrepo']
 final def srcdomain    = stepProps['srcdomain']
+final def srcsecurityDomain = stepProps['srcsecurityDomain']
 final def srcusername  = stepProps['srcusername']
 final def srcpassword  = stepProps['srcpassword'] ? stepProps['srcpassword'] : stepProps['srcpasswordscript']
 final def srchost      = stepProps['srchost']
@@ -41,6 +42,8 @@ final def srcport      = stepProps['srcport']
 final def tarrepo      = stepProps['repo']
 final def tarusername  = stepProps['username']
 final def tarpassword  = stepProps['password'] ? stepProps['password'] : stepProps['passwordscript']
+final def tardomain    = stepProps['tardomain']
+final def tarsecurityDomain = stepProps['tarsecurityDomain']
 final def tarhost      = stepProps['host']
 final def tarport      = stepProps['port']
 final def infaHome     = stepProps['infaHome']
@@ -92,6 +95,9 @@ println('')
 
 def script = new File(inputFile)
 script << "connect -r $srcrepo -n $srcusername -x $srcpassword "
+if (srcsecurityDomain){
+    script << "-s ${srcsecurityDomain} "
+}
 if (srcdomain) {
     script << "-d $srcdomain $LS"
 }
@@ -99,13 +105,16 @@ else {
     script << "-h $srchost -o $srcport $LS"
 }
 script << "deploydeploymentgroup -p $groupname -c $controlFile -r $tarrepo -n $tarusername -x $tarpassword "
-// always use the host and port because the domain is likely not accessible from the source environment
-//if (tardomain) {
-//    script << "-d $tardomain $LS"
-//}
-//else {
+//If doamin is not accessible use the host and port
+if (tarsecurityDomain){
+    script << "-s ${tarsecurityDomain} "
+}
+if (tardomain) {
+	script << "-d $tardomain $LS"
+}
+else {
     script << "-h $tarhost -o $tarport $LS"
-//}
+}
 script << "exit"
 
 println('script content:')

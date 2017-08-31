@@ -11,7 +11,7 @@
 -->
 <plugin xmlns="http://www.urbancode.com/PluginXMLSchema_v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <header>
-    <identifier version="24" id="com.urbancode.air.plugin.Informatica" name="Informatica"/>
+    <identifier version="25" id="com.urbancode.air.plugin.Informatica" name="Informatica"/>
     <description>
     The Informatica plugin is an automation based plugin. It is executed as part of the deployment to migrate Informatica configuration and run scripts against the Informatica server and for creating and deploying deploying groups.
     </description>
@@ -133,6 +133,9 @@
       <property name="repo" required="true">
         <property-ui type="textBox" label="Repository" description="The repository name in Informatica." default-value="${p:resource/informatica/repo}"/>
       </property>
+      <property name="tardomain">
+        <property-ui type="textBox" label="Target Domain Name" description="The domain name of the Informatica server for the target server." default-value="${p:resource/informatica/tardomain}"/>
+	  </property>
       <property name="host">
         <property-ui type="textBox" label="Host" description="The host name of the Informatica server." default-value="${p?:resource/informatica/domain}"/>
       </property>
@@ -148,6 +151,9 @@
       <property name="passwordscript">
         <property-ui type="textBox" label="Password Script" description="If a property or script should be used to retrieve the password, leave it blank and put the property or script here." default-value="${p?:resource/informatica/passscript}"/>
       </property>
+      <property name="tarsecurityDomain" required="false">
+        <property-ui type="textBox" label="Target Security Domain" description="Required if you use LDAP authentication. Name of the security domain that the user or group belongs to. Default is Native." default-value="${p:resource/informatica/tarsecurityDomain}"/>
+	  </property>
       <property name="infaHome">
         <property-ui type="textBox" label="INFA HOME" description="The INFA_HOME variable to be set on the environment. If set we will also use ${INFA_HOME}/server/bin/pmrep as the exe and add this to LD_LIBRARY_PATH and LIBPATH"/>
       </property>
@@ -162,6 +168,9 @@
       </property>
       <property name="srcport">
         <property-ui type="textBox" label="Source Port" description="The port number of the Informatica server for the source server." default-value="${p:resource/informatica/srcport}"/>
+      </property>
+      <property name="srcsecurityDomain" required="false">
+        <property-ui type="textBox" label="Source Security Domain" description="Required if you use LDAP authentication. Name of the security domain that the user or group belongs to. Default is Native." default-value="${p:resource/informatica/srcsecurityDomain}"/>
       </property>
       <property name="srcusername" required="true">
         <property-ui type="textBox" label="Source Username" description="The username to use to authenticate with Informatica for the source server." default-value="${p:resource/informatica/srcusername}"/>
